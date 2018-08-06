@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。    百度百科">
+  <meta name="description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。– 百度百科">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS内购（IAP）那些事">
 <meta property="og:url" content="http://yoursite.com/2018/07/31/iOS内购（IAP）那些事/index.html">
 <meta property="og:site_name" content="糖炒栗子de小站">
-<meta property="og:description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。    百度百科">
+<meta property="og:description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。– 百度百科">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-05T12:16:48.360Z">
+<meta property="og:updated_time" content="2018-08-06T03:43:41.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS内购（IAP）那些事">
-<meta name="twitter:description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。    百度百科">
+<meta name="twitter:description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。– 百度百科">
 
 
 
@@ -340,7 +340,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-08-05 20:16:48" itemprop="dateModified" datetime="2018-08-05T20:16:48+08:00">2018-08-05</time>
+                <time title="Modified: 2018-08-06 11:43:41" itemprop="dateModified" datetime="2018-08-06T11:43:41+08:00">2018-08-06</time>
               
             
           </span>
@@ -375,13 +375,14 @@
       
         <p>最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。</p>
 <blockquote>
-<p>IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。  </p>
-<ul>
-<li>百度百科</li>
-</ul>
+<p>IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。<br>– 百度百科</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="我们通过内购的流程，一步步地说坑到底在哪里"><a href="#我们通过内购的流程，一步步地说坑到底在哪里" class="headerlink" title="我们通过内购的流程，一步步地说坑到底在哪里"></a>我们通过内购的流程，一步步地说坑到底在哪里</h3><ol>
+<h3 id="我们通过内购的流程，一步步地说坑到底在哪里"><a href="#我们通过内购的流程，一步步地说坑到底在哪里" class="headerlink" title="我们通过内购的流程，一步步地说坑到底在哪里"></a>我们通过内购的流程，一步步地说坑到底在哪里</h3><p>苹果内购的主要流程：</p>
+<blockquote>
+<p>获取商品信息 –&gt; 创建交易 –&gt; 把交易添加到队列 –&gt; 交易成功获取凭证 –&gt; 拿着凭证做二次验证 –&gt; 交易成功</p>
+</blockquote>
+<ol>
 <li><p>通过产品ID获取商品信息（SKProduct）。 </p>
  <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">#import <span class="meta-string">&lt;StoreKit/StoreKit.h&gt;</span></span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//把商品ID信息放入一个集合中</span></span><br><span class="line">    <span class="built_in">NSSet</span> *sets = [<span class="built_in">NSSet</span> setWithObjects:<span class="string">@"phonicsphase1"</span>, <span class="literal">nil</span>];</span><br><span class="line">    <span class="comment">//请求内购商品信息，只返回你请求的产品（主要用于验证商品的有效性）</span></span><br><span class="line">    <span class="built_in">SKProductsRequest</span> *productrequest = [[<span class="built_in">SKProductsRequest</span> alloc] initWithProductIdentifiers:sets];</span><br><span class="line">    productrequest.delegate = <span class="keyword">self</span>;</span><br><span class="line">    [productrequest start];</span><br><span class="line">    </span><br><span class="line">    <span class="meta">#pragma mark - 获取商品ID成功的代理方法</span></span><br><span class="line">    - (<span class="keyword">void</span>)productsRequest:(<span class="built_in">SKProductsRequest</span> *)request didReceiveResponse:(<span class="built_in">SKProductsResponse</span> *)response &#123;</span><br><span class="line">        <span class="comment">//返回的是SKProduct对象数组</span></span><br><span class="line">        <span class="comment">//如果你上面请求的是多个，那么这里返回的也是多个</span></span><br><span class="line">        <span class="built_in">SKProduct</span> *product = [response.products firstObject];</span><br><span class="line">        <span class="comment">//查询成功，开始支付</span></span><br><span class="line">        [<span class="keyword">self</span> startPaymentWithProduct:product];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
@@ -489,7 +490,13 @@
 <li><p>首先苹果是有补单措施的，如果不finish交易，每次都会请求<code>updatedTransactions:</code>方法的。但是前面说了，<code>applicationUsername</code>的缺失会导致掉单。<code>applicationUsername</code>的丢失会让我们丢失订单号，但是实际的支付仍然是成功的。</p>
 <ol>
 <li>可以传递给后台<code>未知订单</code>，但客户投诉的时候，我们从未知订单里面找到符合条件的给恢复订单信息（这样做显然效率很低）</li>
-<li>本地保存订单信息，也就是把<code>recipt</code>、<code>orderNumber</code>、<code>userId</code>、<code>transactionIdentifier</code>全部保存下来，支付成功的时候就删除信息。但是这样做，就需要在交易成功的时候<code>finishTransaction:</code>结束交易，因为每次返回的<code>reciptData</code>是不同的。而且在用户卸载App的时候，保存的信息全部都没有了。</li>
+<li><strong>常用的做法是：</strong><ul>
+<li>把每个订单的<code>recipt</code>、<code>orderNumber</code>、<code>userId</code>、<code>transactionIdentifier</code>等你需要的信息保存为一个plist文件，每个plist文件对应一个订单。等我们后台返回支付成功的时候就删除相应的plist。</li>
+<li>每次启动App的时候去沙盒查找plist文件，如果有，就读取plist文件去请求服务器做二次验证，直到服务器返回成功为止。</li>
+<li>但是这样做，就需要在<code>SKPaymentTransactionStatePurchased</code>的时候<code>finishTransaction:</code>结束交易，因为每次返回的<code>reciptData</code>是不同的。除非我们每次都去更新它。并且这样做的话，用户卸载App的时候，保存的订单信息全部都没有了。</li>
+</ul>
+</li>
+<li>用户支付过后，没有等到验证，就更换Apple账号登录。这种情况我没有试过会不会调用<code>updatedTransactions:</code>方法</li>
 <li>其实这个问题始终没有一个很好的解决方案，只能靠苹果的优化了。</li>
 </ol>
 </li>
@@ -498,10 +505,27 @@
 </ol>
 <p><strong>注意：</strong></p>
 <ol>
-<li>网上会有很多把<code>recipt</code>存本地的做法，其实没有必要，苹果自己的补单措施基本上是够用了。</li>
+<li>掉单问题都是出现在支付完成之后，没有通过二次校验的时候。因为一旦我们得到了<code>recipt</code>，就说明苹果已经扣款成功了。但是为什么我们不能以这个作为支付成功的标准呢，请看下面的刷单系列。</li>
+<li>针对上面第二种<code>recipt</code>存本地的方法，其实没有必要，苹果自己的补单措施基本上是够用了。</li>
 <li>如果是你们的App中，用户可以一次性购买多个产品，那么更推荐把<code>recipt</code>存本地。因为如果在有多个成功交易未 finish 掉的情况下把应用关闭后再次打开的时候，有些交易的回调会被漏掉（苹果真坑啊！！！）。当然两者结合也是一个很好的办法。</li>
 </ol>
-<h3 id="先挖个坑，以后讨论一下刷单的问题"><a href="#先挖个坑，以后讨论一下刷单的问题" class="headerlink" title="先挖个坑，以后讨论一下刷单的问题"></a>先挖个坑，以后讨论一下刷单的问题</h3>
+<h3 id="刷单的问题"><a href="#刷单的问题" class="headerlink" title="刷单的问题"></a>刷单的问题</h3><p>刷单的转自<a href="https://blog.csdn.net/autfish/article/details/52682778" target="_blank" rel="noopener">这篇博客</a>，我在这里简述一下，做个小结。</p>
+<p>   刷单主要有以下几种方式：</p>
+<ol>
+<li>破解IAP</li>
+<li>重复使用<code>recipt-data</code></li>
+<li>信用卡黑卡</li>
+<li>外币差价</li>
+<li>以及苹果对小额消费不做验证规则的“36技术”</li>
+</ol>
+<p>我们这里只讨论 1 和 2 ，因为下面三种跟我们开发者没有关系，想要详细了解的可以去开头的博客上了解一下。</p>
+<h4 id="1-破解IAP"><a href="#1-破解IAP" class="headerlink" title="1. 破解IAP"></a>1. 破解IAP</h4><p>   这个主要是我们不做二次验证引发的漏洞，非法用户可以利用插件模拟扣款成功，有可能是手动调用<code>updatedTransactions:</code>（我猜的😂）。就算是我们在App端做了二次验证，结果也有可能是被篡改过的。所以我们需要在自己的服务端进行二次验证。 <strong>任何在App端的数据都是不安全的！！！</strong></p>
+<h4 id="2-重复使用recipt-data"><a href="#2-重复使用recipt-data" class="headerlink" title="2. 重复使用recipt-data"></a>2. 重复使用<code>recipt-data</code></h4><p>   我们直到，<code>recipt-data</code>是支付成功返回给我们的校验凭证，前面说过，苹果校验的时候只负责校验recipt的有效性和真假，并不负责这个凭证是否被用过。如果我们在后台只判断<code>status == 0</code>，而不去做其他判断的话，非法用户会保存<code>recipt-data</code>，然后多次使用，因为每次都是校验通过的。</p>
+<p>   我们也不能判断<code>recipt-data</code>是否被使用，因为上面已经说过，同一个订单也会有多个<code>recipt-data</code>返回的。</p>
+<p>   防范的方法是在确定status值为0后，进一步解析出数据中的transaction_id并存入数据库。每次发货前先检查数据库中是否已经有本次的transaction_id存在，如果已存在则拒绝发货。</p>
+<p>还有一种情况需要注意，有些App购买前先有一步创建订单的行为，在服务器端记录购买的商品、时间等，且发货时是按照订单记录中的商品，那么需要比较苹果返回信息中的product_id与订单表中的记录值是否一致。</p>
+<p><em>到了这里IAP基本上已经结束了，小弟只是把IAP的流程以及需要注意的点列出来，以上的方法只是作为总结，并不适用于所有状况，我们在开发中还要具体问题具体分析。希望大家开发中都不会掉单😄。</em></p>
+
       
     </div>
 
@@ -649,7 +673,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们通过内购的流程，一步步地说坑到底在哪里"><span class="nav-number">1.</span> <span class="nav-text">我们通过内购的流程，一步步地说坑到底在哪里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掉单问题的探讨"><span class="nav-number">2.</span> <span class="nav-text">掉单问题的探讨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#先挖个坑，以后讨论一下刷单的问题"><span class="nav-number">3.</span> <span class="nav-text">先挖个坑，以后讨论一下刷单的问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们通过内购的流程，一步步地说坑到底在哪里"><span class="nav-number">1.</span> <span class="nav-text">我们通过内购的流程，一步步地说坑到底在哪里</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#掉单问题的探讨"><span class="nav-number">2.</span> <span class="nav-text">掉单问题的探讨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷单的问题"><span class="nav-number">3.</span> <span class="nav-text">刷单的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-破解IAP"><span class="nav-number">3.1.</span> <span class="nav-text">1. 破解IAP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-重复使用recipt-data"><span class="nav-number">3.2.</span> <span class="nav-text">2. 重复使用recipt-data</span></a></li></ol></li></ol></div>
             
 
           </div>
