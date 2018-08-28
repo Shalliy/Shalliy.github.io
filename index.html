@@ -323,7 +323,7 @@
                 
               
 
-              <time title="Created: 2018-08-28 15:32:04 / Modified: 16:21:03" itemprop="dateCreated datePublished" datetime="2018-08-28T15:32:04+08:00">2018-08-28</time>
+              <time title="Created: 2018-08-28 15:32:04 / Modified: 16:23:51" itemprop="dateCreated datePublished" datetime="2018-08-28T15:32:04+08:00">2018-08-28</time>
             
 
             
@@ -362,8 +362,7 @@
 
       
         
-          
-            <p>参考链接：<a href="https://www.jianshu.com/p/2ef48c2f0c97" target="_blank" rel="noopener">https://www.jianshu.com/p/2ef48c2f0c97</a></p>
+          <p>参考链接：<a href="https://www.jianshu.com/p/2ef48c2f0c97" target="_blank" rel="noopener">https://www.jianshu.com/p/2ef48c2f0c97</a></p>
 <pre><code>View的Layout方法主要有以下几种：
     layoutSubviews
     layoutIfNeeded
@@ -372,25 +371,14 @@
     drawRect
     sizeThatFits
     sizeToFit
-</code></pre><h5 id="我们先说结论："><a href="#我们先说结论：" class="headerlink" title="我们先说结论："></a>我们先说结论：</h5><ul>
-<li><code>layoutSubviews</code>方法不能手动调用，需要调用<code>[self setNeedsLayout]</code>来触发。</li>
-<li><code>drawRect</code>也不能手动调用，需要调用<code>[self setNeedsDisplay]</code>来触发。</li>
-<li>最后剩下<code>layoutIfNeeded</code>方法。这个方法在使用约束的时候调用，<strong>可以立即更新效果(立即刷新)</strong>。(例如：autoLayout 跟 frame 混用)<code>setNeedsLayout</code>不会立即刷新。</li>
-<li><code>sizeThatFits:</code>会计算出最优的size，并返回给你，但是view本身并不会改变size。</li>
-<li><code>sizeToFit</code>会计算出最优size，并且改变view自身的size</li>
-</ul>
-<h4 id="1-layoutSubviews调用时机（系统调用）"><a href="#1-layoutSubviews调用时机（系统调用）" class="headerlink" title="1. layoutSubviews调用时机（系统调用）"></a>1. <code>layoutSubviews</code>调用时机（系统调用）</h4><ul>
-<li>直接调用<code>[self setNeedsLayout];</code> 。</li>
-<li><code>initWithframe:</code>如果初始<code>frame</code>为<code>CGRectZero</code>则不调用，否则调用</li>
-<li><code>addSubview</code>的时候。</li>
-<li><code>view</code> 的 <code>size</code>发生改变的时候，<strong>前提是<code>frame</code>的值设置前后发生变化</strong>。</li>
-<li>滑动<code>UIScrollView</code>的时候。</li>
-<li>旋转<code>Screen</code>会触发父<code>View</code>上的<code>layoutSubviews</code>事件<strong>(待验证，作者说验证过没有触发)</strong></li>
-</ul>
-<h4 id="2-setNeedsDisplay调用时机"><a href="#2-setNeedsDisplay调用时机" class="headerlink" title="2. setNeedsDisplay调用时机"></a>2. <code>setNeedsDisplay</code>调用时机</h4><p>该方法在调用时，会自动调用<code>drawRect</code>方法。<code>drawRect</code>方法主要用来画图。<br>so：<br>当需要刷新布局时，用<code>setNeedsLayOut</code>方法；<br>当需要重新绘画时，调用<code>setNeedsDisplay</code>方法。</p>
-<h3 id="粗浅的总结："><a href="#粗浅的总结：" class="headerlink" title="粗浅的总结："></a>粗浅的总结：</h3><p>总的来说：我们可以重写父类的<code>layoutSubviews</code> 和 <code>drawRect</code> 方法，但是我们不能手动调用它们，而是需要分别调用<code>setNeedsLayout</code> 和 <code>setNeedsDisplay</code>这两个方法来触发。</p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/08/28/View的Layout方法粗解/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

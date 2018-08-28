@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit 我们先说结论： layou">
+  <meta name="description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="View的Layout方法粗解">
 <meta property="og:url" content="http://yoursite.com/2018/08/28/View的Layout方法粗解/index.html">
 <meta property="og:site_name" content="糖炒栗子de小站">
-<meta property="og:description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit 我们先说结论： layou">
+<meta property="og:description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-28T08:21:03.839Z">
+<meta property="og:updated_time" content="2018-08-28T08:23:51.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的Layout方法粗解">
-<meta name="twitter:description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit 我们先说结论： layou">
+<meta name="twitter:description" content="参考链接：https://www.jianshu.com/p/2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit">
 
 
 
@@ -322,7 +322,7 @@
                 
               
 
-              <time title="Created: 2018-08-28 15:32:04 / Modified: 16:21:03" itemprop="dateCreated datePublished" datetime="2018-08-28T15:32:04+08:00">2018-08-28</time>
+              <time title="Created: 2018-08-28 15:32:04 / Modified: 16:23:51" itemprop="dateCreated datePublished" datetime="2018-08-28T15:32:04+08:00">2018-08-28</time>
             
 
             
@@ -369,7 +369,8 @@
     drawRect
     sizeThatFits
     sizeToFit
-</code></pre><h5 id="我们先说结论："><a href="#我们先说结论：" class="headerlink" title="我们先说结论："></a>我们先说结论：</h5><ul>
+</code></pre><a id="more"></a>
+<h3 id="我们先说结论："><a href="#我们先说结论：" class="headerlink" title="我们先说结论："></a>我们先说结论：</h3><ul>
 <li><code>layoutSubviews</code>方法不能手动调用，需要调用<code>[self setNeedsLayout]</code>来触发。</li>
 <li><code>drawRect</code>也不能手动调用，需要调用<code>[self setNeedsDisplay]</code>来触发。</li>
 <li>最后剩下<code>layoutIfNeeded</code>方法。这个方法在使用约束的时候调用，<strong>可以立即更新效果(立即刷新)</strong>。(例如：autoLayout 跟 frame 混用)<code>setNeedsLayout</code>不会立即刷新。</li>
@@ -544,7 +545,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#我们先说结论："><span class="nav-number">1.</span> <span class="nav-text">我们先说结论：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-layoutSubviews调用时机（系统调用）"><span class="nav-number"></span> <span class="nav-text">1. layoutSubviews调用时机（系统调用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-setNeedsDisplay调用时机"><span class="nav-number"></span> <span class="nav-text">2. setNeedsDisplay调用时机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粗浅的总结："><span class="nav-number"></span> <span class="nav-text">粗浅的总结：</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#我们先说结论："><span class="nav-number">1.</span> <span class="nav-text">我们先说结论：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-layoutSubviews调用时机（系统调用）"><span class="nav-number">1.1.</span> <span class="nav-text">1. layoutSubviews调用时机（系统调用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-setNeedsDisplay调用时机"><span class="nav-number">1.2.</span> <span class="nav-text">2. setNeedsDisplay调用时机</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#粗浅的总结："><span class="nav-number">2.</span> <span class="nav-text">粗浅的总结：</span></a></li></ol></div>
             
 
           </div>
