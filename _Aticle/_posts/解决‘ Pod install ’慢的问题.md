@@ -6,7 +6,7 @@ tags: iOS
 
 前段时间使用cocopods安装百度地图的SDK，发现失败了
 
-<img src="/img/BEEABCAD3116C15F85755B6933808675.jpg" width="50%">
+<img src="/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg" width="50%">
 
 <!--More-->
 
@@ -21,7 +21,7 @@ tags: iOS
 
 打开`Shadowsocks` - `高级设置`选项，可以看到下图所示：
 
-<img src="/img/WX20180904-135254@2x.png" width="50%">
+<img src="/img/PodInstall/WX20180904-135254@2x.png" width="50%">
 
 红框所示圈出来的就是下面我们需要用到的。
 #### 接下来我们输入命令：
