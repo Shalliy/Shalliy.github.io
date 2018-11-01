@@ -32,6 +32,7 @@ tags: iOS, Runtime
         dispatch_once(&onceToken, ^{
             Method systemMethod = class_getClassMethod([UIFont class], @selector(systemFontOfSize:));
             Method swizzMethod = class_getClassMethod([UIFont class], @selector(my_systemFontOfSize:));
+            method_exchangeImplementations(systemMethod, swizzMethod);
         });
     }
     
