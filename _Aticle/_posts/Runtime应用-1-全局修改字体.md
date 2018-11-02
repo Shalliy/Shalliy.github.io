@@ -1,20 +1,20 @@
 ---
 title: Runtime应用(1)-全局修改字体
 date: 2018-11-01 11:55:52
-tags: iOS, Runtime
+tags: iOS
 ---
 ### 我们首先来说下一般情况下更换字体的步骤
 1. 我们从网上down下来一个ttf格式的字体，拖入到项目中，如图所示
 
 <!--More-->
 
-<img src="/img/Runtime01/runtime_01.png" width="50%">
+<img src="/img/Runtime01/runtime_01.png">
 2. 在info.plist文件中添加`Fonts provided by application`，`item`写上文件名，我这里是`蔡云汉隶书书法字体.ttf`
 3. 这时候需要检查一下`Build Phases` --> `Copy Bundle Resources`里面有没有我们拖进去的文件。如果没有，把它Add进去。    
-<img src="/img/Runtime01/runtime_02.png" width="50%">
+<img src="/img/Runtime01/runtime_02.png">
 4. **但是，我们现在还不能使用，因为我们需要找到这个字体的`PostScript`名称**
 那到底要怎么找呢？我们先在电脑上安装这个字体，这时候会在字体册看到它，然后如图操作就可以了。
-<img src="/img/Runtime01/runtime_03.png" width="50%">
+<img src="/img/Runtime01/runtime_03.png">
 5. 最后我们在项目中使用如下代码，就可以看到效果了
 ```objc
     label.font = [UIFont fontWithName:@"CaiYunHanMaoBi-LiShu" size:11];
@@ -100,8 +100,8 @@ WTF，居然崩溃了，崩溃信息如下：
     }
 ```
 然后我们**再一次**运行项目，基本上是接近完美了。
-<img src="/img/Runtime01/runtime_05.jpeg" width="50%">
-但是我们发现Tabbar的字体还是顽固的没有变化😓。**因为我们完全可以在它加载到父View上之后再次改变它的字体**
+<img src="/img/Runtime01/runtime_05.jpeg">
+但是我们发现Tabbar的字体还是顽固的没有变化😓。**有可能是因为在它加载到父View上之后再次改变了字体**
 我们再想，每次UILabel设置字体是不是要调`setFont`方法，就像上面说的，那么我们就交换它的`setFont`方法，让它设置字体的时候偷偷调换掉它的字体。
 
 ```objc

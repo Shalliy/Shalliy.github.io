@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="我们首先来说下一般情况下更换字体的步骤 我们从网上down下来一个ttf格式的字体，拖入到项目中，如图所示">
-<meta name="keywords" content="iOS, Runtime">
+<meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Runtime应用(1)-全局修改字体">
 <meta property="og:url" content="http://yoursite.com/2018/11/01/Runtime应用-1-全局修改字体/index.html">
@@ -121,7 +121,7 @@
 <meta property="og:image" content="http://yoursite.com/img/Runtime01/runtime_03.png">
 <meta property="og:image" content="http://yoursite.com/img/Runtime01/runtime_04.GIF">
 <meta property="og:image" content="http://yoursite.com/img/Runtime01/runtime_05.jpeg">
-<meta property="og:updated_time" content="2018-11-01T10:20:06.000Z">
+<meta property="og:updated_time" content="2018-11-02T01:26:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Runtime应用(1)-全局修改字体">
 <meta name="twitter:description" content="我们首先来说下一般情况下更换字体的步骤 我们从网上down下来一个ttf格式的字体，拖入到项目中，如图所示">
@@ -329,12 +329,24 @@
                 
               
 
-              <time title="创建时间：2018-11-01 11:55:52 / 修改时间：18:20:06" itemprop="dateCreated datePublished" datetime="2018-11-01T11:55:52+08:00">2018-11-01</time>
+              <time title="创建时间：2018-11-01 11:55:52" itemprop="dateCreated datePublished" datetime="2018-11-01T11:55:52+08:00">2018-11-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-02 09:26:55" itemprop="dateModified" datetime="2018-11-02T09:26:55+08:00">2018-11-02</time>
               
             
           </span>
@@ -393,11 +405,11 @@
 <li>我们从网上down下来一个ttf格式的字体，拖入到项目中，如图所示</li>
 </ol>
 <a id="more"></a>
-<p><img src="/img/Runtime01/runtime_01.png" width="50%"></p>
+<p><img src="/img/Runtime01/runtime_01.png"></p>
 <ol start="2">
 <li>在info.plist文件中添加<code>Fonts provided by application</code>，<code>item</code>写上文件名，我这里是<code>蔡云汉隶书书法字体.ttf</code></li>
-<li>这时候需要检查一下<code>Build Phases</code> –&gt; <code>Copy Bundle Resources</code>里面有没有我们拖进去的文件。如果没有，把它Add进去。<br><img src="/img/Runtime01/runtime_02.png" width="50%"></li>
-<li><strong>但是，我们现在还不能使用，因为我们需要找到这个字体的<code>PostScript</code>名称</strong><br>那到底要怎么找呢？我们先在电脑上安装这个字体，这时候会在字体册看到它，然后如图操作就可以了。<br><img src="/img/Runtime01/runtime_03.png" width="50%"></li>
+<li>这时候需要检查一下<code>Build Phases</code> –&gt; <code>Copy Bundle Resources</code>里面有没有我们拖进去的文件。如果没有，把它Add进去。<br><img src="/img/Runtime01/runtime_02.png"></li>
+<li><strong>但是，我们现在还不能使用，因为我们需要找到这个字体的<code>PostScript</code>名称</strong><br>那到底要怎么找呢？我们先在电脑上安装这个字体，这时候会在字体册看到它，然后如图操作就可以了。<br><img src="/img/Runtime01/runtime_03.png"></li>
 <li>最后我们在项目中使用如下代码，就可以看到效果了<figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">label.font = [<span class="built_in">UIFont</span> fontWithName:<span class="string">@"CaiYunHanMaoBi-LiShu"</span> size:<span class="number">11</span>];</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -409,7 +421,7 @@
 <p>崩溃的主要原因是<code>_UIWebViewScrollView</code>没有<code>getFont</code>这个方法（它当然没有）。那么为什么它会调到<code>getFont</code>方法呢？我们写的是<code>UIFont</code>的分类，<code>self.font</code>应该调用的是<code>UILabel</code>的<code>getFont</code>方法呀？</p>
 <p>答案当然是因为消息转发，由于UIFont没有实现<code>willMoveToSuperview:</code>方法，然后就被转发到<code>_UIWebViewScrollView</code>那里了，但是它并没有<code>getFont</code>方法，所以就Crash了。（可以参考iOS的消息转发机制），这里不细说（细说我也不会啊😂）。</p>
 <p>那怎么解决呢？很简单，判断一下就好了：<br><figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  我们在这里使用class_addMethod()函数对Method Swizzling做了一层验证，如果self没有实现被交换的方法，会导致失败。</span></span><br><span class="line"><span class="comment">     而且self没有交换的方法实现，但是父类有这个方法，这样就会调用父类的方法，结果就不是我们想要的结果了。</span></span><br><span class="line"><span class="comment">     所以我们在这里通过class_addMethod()的验证，如果self实现了这个方法，class_addMethod()函数将会返回NO，我们就可以对其进行交换了。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="built_in">BOOL</span> isAdd = class_addMethod([<span class="keyword">self</span> <span class="keyword">class</span>], systemSel, method_getImplementation(swizzMethod), method_getTypeEncoding(swizzMethod));</span><br><span class="line"><span class="keyword">if</span> (isAdd) &#123;</span><br><span class="line">    class_replaceMethod([<span class="keyword">self</span> <span class="keyword">class</span>], swizzSel, method_getImplementation(systemMethod), method_getTypeEncoding(systemMethod));</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">//否则，交换两个方法的实现</span></span><br><span class="line">    method_exchangeImplementations(systemMethod, swizzMethod);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后我们<strong>再一次</strong>运行项目，基本上是接近完美了。<br><img src="/img/Runtime01/runtime_05.jpeg" width="50%"><br>但是我们发现Tabbar的字体还是顽固的没有变化😓。<strong>因为我们完全可以在它加载到父View上之后再次改变它的字体</strong><br>我们再想，每次UILabel设置字体是不是要调<code>setFont</code>方法，就像上面说的，那么我们就交换它的<code>setFont</code>方法，让它设置字体的时候偷偷调换掉它的字体。</p>
+<p>然后我们<strong>再一次</strong>运行项目，基本上是接近完美了。<br><img src="/img/Runtime01/runtime_05.jpeg"><br>但是我们发现Tabbar的字体还是顽固的没有变化😓。<strong>有可能是因为在它加载到父View上之后再次改变了字体</strong><br>我们再想，每次UILabel设置字体是不是要调<code>setFont</code>方法，就像上面说的，那么我们就交换它的<code>setFont</code>方法，让它设置字体的时候偷偷调换掉它的字体。</p>
 <figure class="highlight objc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//交换Set方法</span></span><br><span class="line">    SEL sysSetFont = <span class="keyword">@selector</span>(setFont:);</span><br><span class="line">    SEL swizzSetFont = <span class="keyword">@selector</span>(mySetFont:);</span><br><span class="line"></span><br><span class="line">    Method sysSetFontMethod = class_getInstanceMethod([<span class="keyword">self</span> <span class="keyword">class</span>], sysSetFont);</span><br><span class="line">    Method swizzSetFontMethod = class_getInstanceMethod([<span class="keyword">self</span> <span class="keyword">class</span>], swizzSetFont);</span><br><span class="line"></span><br><span class="line">    method_exchangeImplementations(sysSetFontMethod, swizzSetFontMethod);</span><br><span class="line">    </span><br><span class="line">- (<span class="keyword">void</span>)mySetFont:(<span class="built_in">UIFont</span> *)font &#123;</span><br><span class="line">    <span class="built_in">UIFont</span> *swizzFont = [<span class="built_in">UIFont</span> fontWithName:CustomFontName size:font.pointSize];</span><br><span class="line">    [<span class="keyword">self</span> mySetFont:swizzFont];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>至此，我们终于完成了全局更换字体，虽然代码不多，但是也耗费了我们一段时间，这其中思想重于代码。<br>我们要实现什么效果，怎么做才能实现我们的目的，这其中会造成什么样的后果，或者为什么没有实现我们想要的效果。这是我们要思考的问题，这些为什么，也就是促进我们继续学习的动力。</p>
 <p>示例代码我放在Github上了，地址：<a href="https://github.com/Shalliy/changeFont.git" target="_blank" rel="noopener">https://github.com/Shalliy/changeFont.git</a></p>
@@ -433,7 +445,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/iOS-Runtime/" rel="tag"># iOS, Runtime</a>
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
           
         </div>
       
@@ -546,7 +558,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">1</span>
                     <span class="site-state-item-name">标签</span>
                   
                 </div>
