@@ -1,37 +1,40 @@
 
 
 <!DOCTYPE html>
-<html lang="en" data-default-color-scheme=auto>
+<html lang="zh-CN" data-default-color-scheme=auto>
 
 
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Shalliy">
   <meta name="keywords" content="">
   
     <meta name="description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。– 百度百科">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS内购（IAP）那些事">
 <meta property="og:url" content="http://example.com/2018/07/31/iOS%E5%86%85%E8%B4%AD%EF%BC%88IAP%EF%BC%89%E9%82%A3%E4%BA%9B%E4%BA%8B/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="灰色空间">
 <meta property="og:description" content="最近有个项目客户总是反应掉单，于是乎就看了看内购相关的东西，发现坑还真是不少，这里做个总结。  IAP，即in-App Purchase，是一种智能移动终端应用程序付费的模式，在苹果（Apple）iOS、谷歌安卓（Google Android）、微软WindowsPhone等智能移动终端操作系统中都有相应的实现。– 百度百科">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-07-31T07:38:11.000Z">
-<meta property="article:modified_time" content="2023-10-30T09:35:34.110Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2025-02-18T06:49:06.345Z">
+<meta property="article:author" content="Shalliy">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>iOS内购（IAP）那些事 - Hexo</title>
+  <title>iOS内购（IAP）那些事 - 灰色空间</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -48,11 +51,11 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
 <link  rel="stylesheet" href="/css/main.css" />
@@ -69,7 +72,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -82,7 +85,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -95,7 +98,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Gray Space</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -115,7 +118,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
+                <span>首页</span>
               </a>
             </li>
           
@@ -127,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
+                <span>归档</span>
               </a>
             </li>
           
@@ -139,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
+                <span>分类</span>
               </a>
             </li>
           
@@ -151,7 +154,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
+                <span>标签</span>
               </a>
             </li>
           
@@ -163,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
+                <span>关于</span>
               </a>
             </li>
           
@@ -209,7 +212,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2018-07-31 15:38" pubdate>
-          July 31, 2018 pm
+          2018年7月31日 下午
         </time>
       </span>
     
@@ -220,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.5k words
+          3.5k 字
         
       </span>
     
@@ -231,7 +234,7 @@
         
         
         
-          30 mins
+          30 分钟
         
       </span>
     
@@ -301,7 +304,7 @@
 <li>透传字段<code>applicationUsername</code>可能返回的是<code>nil</code>，这也是丢单的原因之一，有些人说遇到过，有的则说没有遇到过。这个尚不清楚。</li>
 <li><code>[[SKPaymentQueue defaultQueue] finishTransaction:transation]</code>如果不调用这个方法，那么<code>transation</code>就永远不会结束。也就是说每次进来都会重新调用<code>updatedTransactions</code>这个方法，<strong>就算你做过二次校验都没用</strong>。</li>
 <li>二次校验只会校验你的凭证是不是有效，不会关心你这个凭证是不是校验过了，所以说，<strong>一个凭证可以被校验多次（这是刷单方法之一）</strong></li>
-<li>上面说过，如果不<code>finishTransaction</code>，每次进入这个界面都会调用监听方法，但是注意了<strong>每次返回的 reciptData都是不一样，即使是同一个订单。</strong>也就是说，同一个订单也有可能有多个<code>reciptData</code>，所以它并不能用来确定是哪个订单。</li>
+<li>上面说过，如果不<code>finishTransaction</code>，每次进入这个界面都会调用监听方法，但是注意了**每次返回的 reciptData都是不一样，即使是同一个订单。**也就是说，同一个订单也有可能有多个<code>reciptData</code>，所以它并不能用来确定是哪个订单。</li>
 <li>我们最好是在App启动的时候就去设置监听。把内购封装成一个工具类，这样每次启动App就会调用苹果的补单流程。</li>
 </ol>
 </li>
@@ -341,7 +344,7 @@
 <li>其实这个问题始终没有一个很好的解决方案，只能靠苹果的优化了。</li>
 </ol>
 </li>
-<li><p>由于苹果的服务器在美帝，所以延迟的情况还是很严重的，这时候如果是请求超时，我们服务器又没有收到回调，那么就会产生掉单。比较坑的是，<code>updatedTransactions:</code><strong>在App整个生命周期只会走一次。</strong>其实这种情况只要重启App就会重新走苹果的补单流程了。大佬们如果觉得用户体验不好，可以把信息存本地，隔一段时间请求一次服务器。<br>其实现在掉单基本就是上面说的那个原因了，只要把它解决了，掉单基本上也就没有了。</p>
+<li><p>由于苹果的服务器在美帝，所以延迟的情况还是很严重的，这时候如果是请求超时，我们服务器又没有收到回调，那么就会产生掉单。比较坑的是，<code>updatedTransactions:</code>**在App整个生命周期只会走一次。**其实这种情况只要重启App就会重新走苹果的补单流程了。大佬们如果觉得用户体验不好，可以把信息存本地，隔一段时间请求一次服务器。<br>其实现在掉单基本就是上面说的那个原因了，只要把它解决了，掉单基本上也就没有了。</p>
 </li>
 </ol>
 <p><strong>注意：</strong></p>
@@ -396,27 +399,27 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
-          <div>John Doe</div>
+          <div>作者</div>
+          <div>Shalliy</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
-          <div>July 31, 2018</div>
+          <div>发布于</div>
+          <div>2018年7月31日</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Licensed under</div>
+          <div>许可协议</div>
           <div>
             
               
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
-                    <i class="iconfont icon-by"></i>
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -438,7 +441,7 @@
                       <a href="/2018/08/28/View%E7%9A%84Layout%E6%96%B9%E6%B3%95%E7%B2%97%E8%A7%A3/" title="View的Layout方法粗解">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">View的Layout方法粗解</span>
-                        <span class="visible-mobile">Previous</span>
+                        <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
@@ -462,7 +465,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
+    <span>目录</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -518,7 +521,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -526,7 +529,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -545,7 +548,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   
@@ -645,7 +647,7 @@
 
   
 <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
     window.anchors.options = {
       placement: CONFIG.anchorjs.placement,
       visible  : CONFIG.anchorjs.visible
@@ -705,7 +707,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
 </body>
 </html>
