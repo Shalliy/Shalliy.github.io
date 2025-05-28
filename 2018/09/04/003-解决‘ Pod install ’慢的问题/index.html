@@ -16,24 +16,28 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Shalliy">
+  <meta name="author" content="lizi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="参考链接：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit">
+    <meta name="description" content="前段时间使用cocopods安装百度地图的SDK，发现失败了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="View的Layout方法粗解">
-<meta property="og:url" content="http://example.com/2018/08/28/View%E7%9A%84Layout%E6%96%B9%E6%B3%95%E7%B2%97%E8%A7%A3/index.html">
-<meta property="og:site_name" content="灰色空间">
-<meta property="og:description" content="参考链接：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;2ef48c2f0c97 View的Layout方法主要有以下几种：     layoutSubviews     layoutIfNeeded     setNeedsLayout     setNeedsDisplay     drawRect     sizeThatFits     sizeToFit">
+<meta property="og:title" content="解决“Pod install”慢的问题">
+<meta property="og:url" content="http://shalliy.github.io/2018/09/04/003-%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="糖炒栗子de小站">
+<meta property="og:description" content="前段时间使用cocopods安装百度地图的SDK，发现失败了">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-08-28T07:32:04.000Z">
-<meta property="article:modified_time" content="2025-02-18T06:49:06.345Z">
-<meta property="article:author" content="Shalliy">
+<meta property="og:image" content="http://shalliy.github.io/2018/09/04/003-%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg">
+<meta property="og:image" content="http://shalliy.github.io/2018/09/04/003-%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/img/PodInstall/WX20180904-135254@2x.png">
+<meta property="article:published_time" content="2018-09-04T06:07:00.000Z">
+<meta property="article:modified_time" content="2025-05-28T03:48:38.898Z">
+<meta property="article:author" content="lizi">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://shalliy.github.io/2018/09/04/003-%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg">
   
   
   
-  <title>View的Layout方法粗解 - 灰色空间</title>
+  <title>解决“Pod install”慢的问题 - 糖炒栗子de小站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -71,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"shalliy.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -97,7 +101,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Gray Space</strong>
+      <strong>Sugar Station</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -199,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="View的Layout方法粗解"></span>
+            <span id="subtitle" data-typed-text="解决“Pod install”慢的问题"></span>
           
         </div>
 
@@ -210,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2018-08-28 15:32" pubdate>
-          2018年8月28日 下午
+        <time datetime="2018-09-04 14:07" pubdate>
+          2018年9月4日 下午
         </time>
       </span>
     
@@ -222,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          334 字
+          275 字
         
       </span>
     
@@ -270,37 +274,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">View的Layout方法粗解</h1>
+            <h1 id="seo-header">解决“Pod install”慢的问题</h1>
             
             
               <div class="markdown-body">
                 
-                <p>参考链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2ef48c2f0c97">https://www.jianshu.com/p/2ef48c2f0c97</a></p>
-<pre><code class="hljs">View的Layout方法主要有以下几种：
-    layoutSubviews
-    layoutIfNeeded
-    setNeedsLayout
-    setNeedsDisplay
-    drawRect
-    sizeThatFits
-    sizeToFit       
-</code></pre>
+                <p>前段时间使用cocopods安装百度地图的SDK，发现失败了</p>
+<img src="img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg" srcset="/img/loading.gif" lazyload width="50%">
+
 <span id="more"></span>
 
-<h4 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h4><ul>
-<li><code>layoutSubviews</code>方法不能手动调用，需要调用<code>[self setNeedsLayout]</code>来触发。</li>
-<li><code>drawRect</code>也不能手动调用，需要调用<code>[self setNeedsDisplay]</code>来触发。</li>
-<li>最后剩下<code>layoutIfNeeded</code>方法。这个方法在使用约束的时候调用，<strong>可以立即更新效果(立即刷新)</strong>。(例如：autoLayout 跟 frame 混用)<code>setNeedsLayout</code>不会立即刷新。</li>
-<li><code>sizeThatFits:</code>会计算出最优的size，并返回给你，但是view本身并不会改变size。</li>
-<li><code>sizeToFit</code>会计算出最优size，并且改变view自身的size</li>
-</ul>
-<ol>
-<li><p><code>layoutSubviews</code>调用时机（系统调用）<br>直接调用<code>[self setNeedsLayout];</code> 。<br><code>initWithframe:</code>如果初始<code>frame</code>为<code>CGRectZero</code>则不调用，否则调用<br><code>addSubview</code>的时候。<br><code>view</code> 的 <code>size</code>发生改变的时候，<strong>前提是<code>frame</code>的值设置前后发生变化</strong>。<br>滑动<code>UIScrollView</code>的时候。<br>旋转<code>Screen</code>会触发父<code>View</code>上的<code>layoutSubviews</code>事件**(待验证，作者说验证过没有触发)</p>
-</li>
-<li><p><code>setNeedsDisplay</code>调用时机<br>该方法在调用时，会自动调用<code>drawRect</code>方法。<code>drawRect</code>方法主要用来画图。<br>so：<br>当需要刷新布局时，用<code>setNeedsLayOut</code>方法；<br>当需要重新绘画时，调用<code>setNeedsDisplay</code>方法。</p>
-</li>
-</ol>
-<h4 id="粗浅的总结"><a href="#粗浅的总结" class="headerlink" title="粗浅的总结"></a>粗浅的总结</h4><p>总的来说：我们可以重写父类的<code>layoutSubviews</code> 和 <code>drawRect</code> 方法，但是我们不能手动调用它们，而是需要分别调用<code>setNeedsLayout</code> 和 <code>setNeedsDisplay</code>这两个方法来触发。</p>
+<p>直到我看到了看了这么一篇博客：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuquan0625/article/details/47401235">pod install速度慢的终极解决方案 - CSDN博客</a></p>
+<p>现在简单记录一下：<br>其实真正的原因不是Pod命令，而是在于Github上代码库访问速度变慢，那么我们终极的解决办法就是加快Git命令的速度。        </p>
+<p>那么怎么才能加快Git命令的速度呢，当然是<code>科学上网</code>了🤫。<br>我用的是Shadowsocks-NG-R8，具体怎么使用，大家可以自行百度。</p>
+<p>打开<code>Shadowsocks</code> - <code>高级设置</code>选项，可以看到下图所示：</p>
+<img src="img/PodInstall/WX20180904-135254@2x.png" srcset="/img/loading.gif" lazyload width="50%">
+
+<p>红框所示圈出来的就是下面我们需要用到的。	<br><strong>接下来我们输入命令：</strong><br><code>git config --global http.proxy socks5://127.0.0.1:1086</code></p>
+<p>如果我们不希望国内Git库也走代理（我觉得还是全局好，国内库也有特别慢的），可以输入命令：<br><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1086</code></p>
+<p><strong>当然，如果要恢复&#x2F;移除上面设置的Git代理</strong><br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset http.https://github.com.proxy</code></p>
 
                 
               </div>
@@ -310,6 +302,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/iOS/" class="print-no-link">#iOS</a>
+      
+    </div>
+  
 </div>
 
 
@@ -318,20 +317,20 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>View的Layout方法粗解</div>
-      <div>http://example.com/2018/08/28/View的Layout方法粗解/</div>
+      <div>解决“Pod install”慢的问题</div>
+      <div>http://shalliy.github.io/2018/09/04/003-解决‘ Pod install ’慢的问题/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>Shalliy</div>
+          <div>lizi</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2018年8月28日</div>
+          <div>2018年9月4日</div>
         </div>
       
       
@@ -363,9 +362,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/09/04/%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" title="解决“Pod install”慢的问题">
+                      <a href="/2018/11/01/004-Runtime%E5%BA%94%E7%94%A8-1-%E5%85%A8%E5%B1%80%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93/" title="Runtime应用(1)-全局修改字体">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解决“Pod install”慢的问题</span>
+                        <span class="hidden-mobile">Runtime应用(1)-全局修改字体</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -373,8 +372,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/07/31/iOS%E5%86%85%E8%B4%AD%EF%BC%88IAP%EF%BC%89%E9%82%A3%E4%BA%9B%E4%BA%8B/" title="iOS内购（IAP）那些事">
-                        <span class="hidden-mobile">iOS内购（IAP）那些事</span>
+                      <a href="/2018/08/28/002-View%E7%9A%84Layout%E6%96%B9%E6%B3%95%E7%B2%97%E8%A7%A3/" title="View的Layout方法粗解">
+                        <span class="hidden-mobile">View的Layout方法粗解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

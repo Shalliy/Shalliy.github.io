@@ -16,28 +16,25 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Shalliy">
+  <meta name="author" content="lizi">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前段时间使用cocopods安装百度地图的SDK，发现失败了">
+    <meta name="description" content="1.跨页面更新数据在使用GetX的时候，有时候需要跨页面修改数据，比如有ABC三个页面，在C页面的某个值更改值时，需要在A页面体现出来，这时候就需要用到Get.find&lt;SomeController&gt;();。 但是如果SomeController没有注册，也就是没有调用Get.put()方法，就会发生Crash。这时候，我们需要判断SomeController是否注册过： 12345b">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决“Pod install”慢的问题">
-<meta property="og:url" content="http://example.com/2018/09/04/%E8%A7%A3%E5%86%B3%E2%80%98%20Pod%20install%20%E2%80%99%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
-<meta property="og:site_name" content="灰色空间">
-<meta property="og:description" content="前段时间使用cocopods安装百度地图的SDK，发现失败了">
+<meta property="og:title" content="Flutter难点解析">
+<meta property="og:url" content="http://shalliy.github.io/2023/11/02/006-Flutter%E9%9A%BE%E7%82%B9%E8%A7%A3%E6%9E%90/index.html">
+<meta property="og:site_name" content="糖炒栗子de小站">
+<meta property="og:description" content="1.跨页面更新数据在使用GetX的时候，有时候需要跨页面修改数据，比如有ABC三个页面，在C页面的某个值更改值时，需要在A页面体现出来，这时候就需要用到Get.find&lt;SomeController&gt;();。 但是如果SomeController没有注册，也就是没有调用Get.put()方法，就会发生Crash。这时候，我们需要判断SomeController是否注册过： 12345b">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg">
-<meta property="og:image" content="http://example.com/img/PodInstall/WX20180904-135254@2x.png">
-<meta property="article:published_time" content="2018-09-04T06:07:00.000Z">
-<meta property="article:modified_time" content="2025-02-18T06:49:06.346Z">
-<meta property="article:author" content="Shalliy">
-<meta property="article:tag" content="iOS">
+<meta property="article:published_time" content="2023-11-02T02:44:00.000Z">
+<meta property="article:modified_time" content="2025-02-18T08:03:30.302Z">
+<meta property="article:author" content="lizi">
+<meta property="article:tag" content="Flutter">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg">
   
   
   
-  <title>解决“Pod install”慢的问题 - 灰色空间</title>
+  <title>Flutter难点解析 - 糖炒栗子de小站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -75,7 +72,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"shalliy.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -101,7 +98,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Gray Space</strong>
+      <strong>Sugar Station</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -203,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="解决“Pod install”慢的问题"></span>
+            <span id="subtitle" data-typed-text="Flutter难点解析"></span>
           
         </div>
 
@@ -214,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2018-09-04 14:07" pubdate>
-          2018年9月4日 下午
+        <time datetime="2023-11-02 10:44" pubdate>
+          2023年11月2日 上午
         </time>
       </span>
     
@@ -226,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          275 字
+          336 字
         
       </span>
     
@@ -274,25 +271,20 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">解决“Pod install”慢的问题</h1>
+            <h1 id="seo-header">Flutter难点解析</h1>
             
             
               <div class="markdown-body">
                 
-                <p>前段时间使用cocopods安装百度地图的SDK，发现失败了</p>
-<img src="/img/PodInstall/BEEABCAD3116C15F85755B6933808675.jpg" srcset="/img/loading.gif" lazyload width="50%">
+                <h2 id="1-跨页面更新数据"><a href="#1-跨页面更新数据" class="headerlink" title="1.跨页面更新数据"></a>1.跨页面更新数据</h2><p>在使用<code>GetX</code>的时候，有时候需要跨页面修改数据，比如有ABC三个页面，在<code>C</code>页面的某个值更改值时，需要在<code>A</code>页面体现出来，这时候就需要用到<code>Get.find&lt;SomeController&gt;();</code>。</p>
+<p>但是如果<code>SomeController</code>没有注册，也就是没有调用<code>Get.put()</code>方法，就会发生<code>Crash</code>。这时候，我们需要判断<code>SomeController</code>是否注册过：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dart"><span class="hljs-built_in">bool</span> isControllerRegistered = GetInstance().isRegistered&lt;SomeController&gt;();<br><span class="hljs-keyword">if</span> (isControllerRegistered) &#123;<br>    SomeController controller = Get.find&lt;SomeController&gt;();<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<span id="more"></span>
+<h2 id="2-onInit不调用的问题"><a href="#2-onInit不调用的问题" class="headerlink" title="2.onInit不调用的问题"></a>2.onInit不调用的问题</h2><p>使用<code>GetX</code>的时候，有时候<code>controller</code>的<code>onInit</code>方法不调用，原因很可能是在<code>view</code>中没有调用<code>controller</code>的方法，<code>controller</code>没有加载的缘故</p>
+<h2 id="3-TabBar的问题"><a href="#3-TabBar的问题" class="headerlink" title="3.TabBar的问题"></a>3.TabBar的问题</h2><p>如果使用<code>PageView</code>配合<code>BottomNavigationBarItem</code>，在进入App的时候，所有Page都会加载，有些时候这样做会产生问题。(比如b需要a的一些数据，但是b已经加载完成了，a的数据还没请求成功)。<br>所有最好是使用下列示例代码（不使用Pageview）：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs dart">Scaffold(<br>    appBar: appbar,<br>    body: pages[currentIndex],<br>    bottomNavigationBar: BottomNavigationBar(<br>        items: [<br>            item1,<br>            item2,<br>            ...<br>        ]<br>    )<br>);<br></code></pre></td></tr></table></figure>
 
-<p>直到我看到了看了这么一篇博客：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wuquan0625/article/details/47401235">pod install速度慢的终极解决方案 - CSDN博客</a></p>
-<p>现在简单记录一下：<br>其实真正的原因不是Pod命令，而是在于Github上代码库访问速度变慢，那么我们终极的解决办法就是加快Git命令的速度。        </p>
-<p>那么怎么才能加快Git命令的速度呢，当然是<code>科学上网</code>了🤫。<br>我用的是Shadowsocks-NG-R8，具体怎么使用，大家可以自行百度。</p>
-<p>打开<code>Shadowsocks</code> - <code>高级设置</code>选项，可以看到下图所示：</p>
-<img src="/img/PodInstall/WX20180904-135254@2x.png" srcset="/img/loading.gif" lazyload width="50%">
-
-<p>红框所示圈出来的就是下面我们需要用到的。	<br><strong>接下来我们输入命令：</strong><br><code>git config --global http.proxy socks5://127.0.0.1:1086</code></p>
-<p>如果我们不希望国内Git库也走代理（我觉得还是全局好，国内库也有特别慢的），可以输入命令：<br><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1086</code></p>
-<p><strong>当然，如果要恢复&#x2F;移除上面设置的Git代理</strong><br><code>git config --global --unset http.proxy</code><br><code>git config --global --unset http.https://github.com.proxy</code></p>
+<h2 id="4-Text组件显示红色字体，带有黄色下划线"><a href="#4-Text组件显示红色字体，带有黄色下划线" class="headerlink" title="4.Text组件显示红色字体，带有黄色下划线"></a>4.Text组件显示红色字体，带有黄色下划线</h2><p>这是因为该<code>Widget</code>没有被<code>Scaffold</code>、<code>Dialog</code>等包裹，因为这些组件内置<code>DefaultTextStyle</code>，如果你不想使用上述组件，也可以手动使用<code>DefaultTextStyle</code>包裹，这样<code>Text</code>就显示正常了。</p>
 
                 
               </div>
@@ -305,7 +297,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/iOS/" class="print-no-link">#iOS</a>
+        <a href="/tags/Flutter/" class="print-no-link">#Flutter</a>
       
     </div>
   
@@ -317,20 +309,20 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>解决“Pod install”慢的问题</div>
-      <div>http://example.com/2018/09/04/解决‘ Pod install ’慢的问题/</div>
+      <div>Flutter难点解析</div>
+      <div>http://shalliy.github.io/2023/11/02/006-Flutter难点解析/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>Shalliy</div>
+          <div>lizi</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2018年9月4日</div>
+          <div>2023年11月2日</div>
         </div>
       
       
@@ -362,9 +354,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2018/11/01/Runtime%E5%BA%94%E7%94%A8-1-%E5%85%A8%E5%B1%80%E4%BF%AE%E6%94%B9%E5%AD%97%E4%BD%93/" title="Runtime应用(1)-全局修改字体">
+                      <a href="/2023/11/02/007-Flutter%E9%A1%B9%E7%9B%AE%E5%8D%87%E7%BA%A7SDK/" title="Flutter项目更新SDK">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Runtime应用(1)-全局修改字体</span>
+                        <span class="hidden-mobile">Flutter项目更新SDK</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -372,8 +364,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2018/08/28/View%E7%9A%84Layout%E6%96%B9%E6%B3%95%E7%B2%97%E8%A7%A3/" title="View的Layout方法粗解">
-                        <span class="hidden-mobile">View的Layout方法粗解</span>
+                      <a href="/2023/10/31/005-%E5%9F%BA%E4%BA%8EFlutter%E7%9A%84WebRTC%E5%AD%A6%E4%B9%A0/" title="基于Flutter的WebRTC学习">
+                        <span class="hidden-mobile">基于Flutter的WebRTC学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
